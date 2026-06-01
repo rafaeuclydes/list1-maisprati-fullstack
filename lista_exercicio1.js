@@ -11,15 +11,13 @@ if (numInteiro % 2 == 0) {
 /* 2. Crie um programa que classifica a idade de uma pessoa em categorias (criança,
 adolescente, adulto, idoso) com base no valor fornecido, utilizando uma estrutura de
 controle if-else. */
-let idade = 80;
+let idade = 60;
 
 if (idade < 13) {
   console.log("Você é criança");
-}
-if (idade >= 13 && idade < 18) {
+} else if (idade < 18) {
   console.log("Você é adolescente");
-}
-if (idade >= 18 && idade < 60) {
+} else if (idade < 60) {
   console.log("Você é adulto");
 } else {
   console.log("Você é idoso");
@@ -149,7 +147,7 @@ Fibonacci utilizando um loop for. */
 let n = 10;
 let fibonacci = [0, 1];
 
-for (i = 2; i < n; i++) {
+for (let i = 2; i < n; i++) {
   fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
 }
 
@@ -163,8 +161,6 @@ for (let add = 0; add < 7; add++) {
   nomes[add] = PROMPT(`Informe nome ${add + 1}: `);
 }
 
-console.log(nomes.reverse());
-console.table(nomes.reverse());
 console.log(`Nomes fornecidor em ordem inversa: ${nomes.reverse().join(", ")}`);
 
 /* 11. Crie um programa que leia o nome e a idade de 9 pessoas e guarde esses valores em
@@ -441,8 +437,8 @@ function objetoNovo(obj1, obj2) {
   return obj3;
 }
 
-let sera = objetoNovo(obj1, obj2);
-console.log(sera);
+let final = objetoNovo(obj1, obj2);
+console.log(final);
 
 /* 20. Dado um array de strings, crie um objeto onde cada string é uma chave, e seu valor é o número de vezes que a string aparece no array. */
 let aleatorios = ["sapo", "gato", "cachorro", "passaro", "gato", "macaco"];
@@ -461,6 +457,22 @@ console.table(organizacao);
 
 /* 21. Suponha que você tem um array de objetos onde cada objeto representa uma venda com vendedor e valor. Escreva uma função que retorne um objeto que sumarize o total de vendas por vendedor. */
 let vendas = [
+  {
+    vendedor: "karen",
+    valor: 50,
+  },
+  {
+    vendedor: "mario",
+    valor: 50,
+  },
+  {
+    vendedor: "joao",
+    valor: 150,
+  },
+  {
+    vendedor: "karen",
+    valor: 1550,
+  },
   {
     vendedor: "joao",
     valor: 50,
@@ -496,4 +508,6 @@ function totalVendas() {
   return relatorioVendas;
 }
 
-console.log(totalVendas());
+let funcaoVendas = totalVendas();
+console.log(funcaoVendas);
+console.table(funcaoVendas);
