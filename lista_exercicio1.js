@@ -322,3 +322,178 @@ let resultadosPop = dadosPopulacao();
 console.table(resultadosPop);
 
 /* 15. Criar e imprimir a matriz identidade MI[1..7,1..7] em que todos os elementos da diagonal principal são iguais a 1 e os demais são nulos. */
+let dadosMatriz = 7;
+let MI = [];
+
+for (let i = 1; i <= dadosMatriz; i++) {
+  MI[i] = [];
+  for (let j = 1; j <= dadosMatriz; j++) {
+    if (i === j) {
+      MI[i][j] = 1;
+    } else {
+      MI[i][j] = null;
+    }
+  }
+}
+
+console.log("Matriz identidade MI[1..7,1..7]: ");
+
+for (let i = 1; i <= dadosMatriz; i++) {
+  let linha = "";
+  for (let j = 1; j <= dadosMatriz; j++) {
+    linha += MI[i][j] + " ";
+  }
+  console.log(linha);
+}
+
+/* 16. Dada uma matriz M[1..6,1..8], criar um vetor C que contenha, em cada posição, a
+quantidade de elementos negativos da linha correspondente de M. */
+const linha = 3;
+const coluna = 2;
+
+let matriz = [];
+
+for (let il = 1; il <= linha; il++) {
+  matriz[il] = [];
+  for (let cl = 1; cl <= coluna; cl++) {
+    matriz[il][cl] = Number(
+      PROMPT(`Digite os valores da matriz | M[${il}] [$${cl}]: `),
+    );
+  }
+}
+
+const c = [];
+
+for (let il = 1; il <= linha; il++) {
+  let contador = 0;
+  for (let cl = 1; cl <= coluna; cl++) {
+    if (matriz[il][cl] < 0) {
+      contador++;
+    }
+  }
+  c[il] = contador;
+}
+
+for (let il = 1; il <= linha; il++) {
+  console.log(`c[${il}] = ${c[il]} negativos`);
+}
+
+/* 17. Dado o objeto pessoa com propriedades nome e idade, acesse e imprima o valor de
+idade. Adicione uma nova propriedade chamada email ao objeto pessoa que já possui
+nome e idade. */
+let pessoa = {
+  nome: "Rafael",
+  idade: 36,
+};
+
+console.log(pessoa.idade);
+
+pessoa.email = "rafael@gmail.com";
+console.log(pessoa);
+
+/*18. Crie um objeto chamado dados que contém várias propriedades, incluindo números,
+strings e arrays. Escreva uma função que retorne um novo objeto apenas com as
+propriedades que são arrays. */
+let dados = {
+  numeros: (1, 3, 6, 9, 9),
+  animais: ["gato", "sapo"],
+  strings: "aleatório",
+  arrays: ["a", "b", "c"],
+};
+
+function puxaArrays(object) {
+  let apenasArrays = {};
+
+  for (let propriedade in object) {
+    if (Array.isArray(object[propriedade])) {
+      apenasArrays[propriedade] = object[propriedade];
+    }
+  }
+  return apenasArrays;
+}
+
+let teste = puxaArrays(dados);
+console.log(teste);
+
+/* 19. Dado dois objetos, obj1 e obj2, escreva uma função que crie um novo objeto
+combinando as propriedades de ambos, onde as propriedades de obj2 têm
+precedência sobre as do obj1 em caso de conflitos. */
+let obj1 = {
+  animal: "gato",
+  nome: "pumba",
+};
+
+let obj2 = {
+  nome: "grampola",
+};
+
+function objetoNovo(obj1, obj2) {
+  let obj3 = {};
+
+  for (let prop in obj1) {
+    obj3[prop] = obj1[prop];
+  }
+
+  for (let prop in obj2) {
+    obj3[prop] = obj2[prop];
+  }
+
+  return obj3;
+}
+
+let sera = objetoNovo(obj1, obj2);
+console.log(sera);
+
+/* 20. Dado um array de strings, crie um objeto onde cada string é uma chave, e seu valor é o número de vezes que a string aparece no array. */
+let aleatorios = ["sapo", "gato", "cachorro", "passaro", "gato", "macaco"];
+let organizacao = {};
+
+for (let prop = 0; prop < aleatorios.length; prop++) {
+  let animal = aleatorios[prop];
+
+  if (organizacao[animal]) {
+    organizacao[animal]++;
+  } else {
+    organizacao[animal] = 1;
+  }
+}
+console.table(organizacao);
+
+/* 21. Suponha que você tem um array de objetos onde cada objeto representa uma venda com vendedor e valor. Escreva uma função que retorne um objeto que sumarize o total de vendas por vendedor. */
+let vendas = [
+  {
+    vendedor: "joao",
+    valor: 50,
+  },
+  {
+    vendedor: "maria",
+    valor: 150,
+  },
+  {
+    vendedor: "ana",
+    valor: 500,
+  },
+  {
+    vendedor: "maria",
+    valor: 500,
+  },
+];
+
+function totalVendas() {
+  let relatorioVendas = {};
+
+  for (let props = 0; props < vendas.length; props++) {
+    let vendedor = vendas[props].vendedor;
+    let vendasVend = vendas[props].valor;
+
+    if (relatorioVendas[vendedor]) {
+      relatorioVendas[vendedor] += vendasVend;
+    } else {
+      relatorioVendas[vendedor] = vendasVend;
+    }
+  }
+
+  return relatorioVendas;
+}
+
+console.log(totalVendas());
